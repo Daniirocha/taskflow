@@ -1,0 +1,2 @@
+-- Initialize database with default columns for Kanban board
+-- This will be auto-executed when first project is created
