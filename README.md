@@ -124,4 +124,5 @@ Não há dependências de serviços externos obrigatórios para rodar a aplicaç
 
 ## 👩‍💻 Autora
 Desenvolvido por **Danielle Rocha**
+
 Projeto criado com foco em **aprendizado prático, portfólio e boas práticas** em aplicações modernas com React e Next.js.
