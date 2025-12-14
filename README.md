@@ -1,128 +1,108 @@
-# 🚀 TaskFlow Pro
+![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+![Next.js](https://img.shields.io/badge/next-16.0.10-informational)
+![React](https://img.shields.io/badge/react-19.2.0-informational)
+![PNPM](https://img.shields.io/badge/package%20manager-pnpm-blue)
 
-TaskFlow Pro é uma aplicação web moderna para gerenciamento de projetos e tarefas, inspirada em metodologias Kanban, com foco em **produtividade, organização e experiência visual limpa e profissional**.
+# TaskFlow Pro
 
-O projeto foi desenvolvido com **Next.js (App Router)**, backend integrado com **Prisma**, e uma interface **minimalista** com microinterações suaves.
+TaskFlow Pro é uma aplicação web moderna para gerenciamento de projetos e tarefas com foco em produtividade e usabilidade. Inspirada em metodologias Kanban, traz uma experiência fluida com um design minimalista e interações agradáveis.
 
----
+## 🔍 Sumário
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias](#-tecnologias)
+- [Demonstração](#-demonstra%C3%A7%C3%A3o)
+- [Instalação e Execução](#-instala%C3%A7%C3%A3o-e-execução)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Autor](#-autor)
+- [Licença](#-licença)
 
 ## ✨ Funcionalidades
+- Dashboard com métricas e visualização de projetos
+- Kanban board com colunas (A Fazer / Em Progresso / Concluído)
+- Drag & Drop suave entre colunas e sincronização imediata
+- CRUD completo para projetos e tarefas (modais de criação/edição)
+- Integração com Prisma para persistência (SQLite por padrão em dev)
+- Design responsivo com microinterações usando Framer Motion
 
-### 📊 Dashboard Interativo
-- Métricas de tarefas (pendentes, em andamento e concluídas)  
-- Lista de projetos recentes  
-- Sidebar recolhível  
+## 🛠️ Tecnologias
+- Frontend: Next.js (App Router), React, TypeScript, Tailwind CSS
+- UI primitives: shadcn/ui, Radix
+- Animações: Framer Motion
+- Backend: Next.js API Routes, Prisma ORM
+- DB local (desenvolvimento): SQLite (prisma)
 
-### 📁 Gerenciamento de Projetos
-- Criar e listar projetos  
-- Navegação individual por projeto  
+## 🎥 Demonstração
+Insira GIFs e screenshots na pasta `public/` e substitua os links abaixo.
 
-### 🧩 Kanban Board
-- Colunas: A Fazer, Em Progresso e Concluído  
-- Drag & Drop entre colunas  
-- Atualização de status em tempo real  
+- Dashboard: `public/gifs/dashboard.gif`
+- Criação de Projeto: `public/gifs/create-project.gif`
+- Board Kanban (Drag & Drop): `public/gifs/kanban.gif`
 
-### 📝 Gerenciamento de Tarefas
-- Criar, editar e remover tarefas  
-- Campos: título, descrição, prioridade, prazo e responsável  
-
-### 🎨 Design Moderno e Responsivo
-- Estilo minimalista  
-- Cantos arredondados e espaçamento confortável  
-- Microanimações com Framer Motion  
-- Paleta de cores personalizada  
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-**Frontend**  
-- Next.js 14+ (App Router)  
-- React  
-- TypeScript  
-- Tailwind CSS  
-- shadcn/ui  
-- Framer Motion  
-- Lucide Icons  
-
-**Backend**  
-- API Routes (Next.js)  
-- Prisma ORM  
-- SQLite (ambiente local)  
-
----
-
-## 🎨 Identidade Visual
-
-O projeto utiliza uma paleta de cores suave e elegante, focada em tons **rosados/mauve**, aplicada de forma consistente em toda a interface:
-
-| Elemento             | Cor       |
-|---------------------|-----------|
-| Background           | `#fdf7f9` |
-| Elementos de destaque| `#d990aa` |
-| Texto principal      | `#4b2e35` |
-| Cards e bordas       | Tons neutros |
-
----
-
-## 📦 Estrutura do Projeto
-
+## 📦 Estrutura do Projeto (resumida)
+```
 app/
-├─ api/ # API routes (CRUD)
-├─ projects/ # Páginas de projetos
-├─ tasks/ # Kanban e tarefas
-├─ layout.tsx # Layout global
-└─ page.tsx # Dashboard
+├─ api/                # Rotas de API (tasks, projects)
+├─ projects/           # Pages de projeto, ex: /projects/[id]
+├─ tasks/              # Páginas e rotas relacionadas a tarefas
+├─ layout.tsx          # Layout global
+└─ page.tsx            # Dashboard
 
-components/
-├─ sidebar.tsx
-├─ project-card.tsx
-├─ metric-card.tsx
-└─ ui/ # Componentes shadcn
+components/            # Componentes React reusáveis (ui, atoms)
+prisma/                # Schema Prisma
+public/                # Recursos públicos (imagens, gifs)
+```
 
-prisma/
-└─ schema.prisma # Modelos do banco de dados
+## ▶️ Executando localmente
+Siga estes passos rápidos para rodar o projeto em sua máquina:
 
-public/
-└─ favicon.svg
+1. Clone o repositório
 
----
-
-## ▶️ Como Rodar o Projeto Localmente
-
-1️⃣ **Clone o repositório**  
 ```bash
 git clone https://github.com/seu-usuario/taskflow-pro.git
 cd taskflow-pro
+```
 
-2️⃣ **Instale as dependências**
+2. Instale dependências (pnpm ou npm)
+
+```bash
+pnpm install
+# ou
 npm install
+```
 
+3. Inicialize o banco (Prisma)
 
-3️⃣ **Crie o banco de dados**
+```bash
+pnpm prisma:push
+# ou
 npm run prisma:push
+```
 
+4. Ambiente de desenvolvimento
 
-4️⃣ **Rode o projeto**
+```bash
+pnpm dev
+# ou
 npm run dev
 ```
-Acesse: http://localhost:3000
+
+> Abra http://localhost:3000
+
+## 🔁 Scripts úteis
+- `dev` — Executa Next.js em modo dev
+- `build` — Compila para produção
+- `start` — Inicia servidor Next.js buildado
+- `prisma:push` — Aplica schema Prisma ao banco
+
+## 💡 Notas sobre Banco de Dados
+- Em ambiente de desenvolvimento, o projeto utiliza SQLite por padrão (conforme `prisma/schema.prisma`).
+- Para produção, defina `DATABASE_URL` apontando para o provedor desejado (Postgres, MySQL, etc.) e rode as migrations adequadamente.
+
+## 👩‍💻 Autor
+Danielle Rocha — Desenvolvedora e autora do projeto. Ideal para portfólio e aprendizado em Next.js, Prisma e ecossistema React.
+
+## 📜 Licença
+Este projeto está licenciado sob a licença MIT.
 
 ---
 
-## 🚀 Deploy
-O projeto está pronto para deploy em plataformas como Vercel.
-Não há dependências de serviços externos obrigatórios para rodar a aplicação.
-
----
-
-## 📌 Status do Projeto
-- ✅ Funcional
-- 🚧 Em evolução (novas features e melhorias de UX podem ser adicionadas)
-
----
-
-## 👩‍💻 Autora
-Desenvolvido por **Danielle Rocha**
-
-Projeto criado com foco em **aprendizado prático, portfólio e boas práticas** em aplicações modernas com React e Next.js.

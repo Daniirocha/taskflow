@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description: "Sistema profissional de gerenciamento de tarefas e projetos",
   icons: {
     icon: "/favicon.svg",
-  },
+  }
 }
 
 export default function RootLayout({
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="font-sans antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   )

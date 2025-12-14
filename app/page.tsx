@@ -7,12 +7,14 @@ import { Sidebar } from "@/components/sidebar"
 import { MetricCard } from "@/components/metric-card"
 import { ProjectCard } from "@/components/project-card"
 import { Button } from "@/components/ui/button"
+import { ProjectModal } from "@/components/project-modal"
 import { useRouter } from "next/navigation"
 
 export default function Dashboard() {
   const [projects, setProjects] = useState<any[]>([])
   const [tasks, setTasks] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -52,27 +54,20 @@ export default function Dashboard() {
   const inProgressTasks = tasks.filter((t) => t.status === "in_progress").length
   const completedTasks = tasks.filter((t) => t.status === "done").length
 
-  const handleCreateProject = async () => {
-    const name = prompt("Nome do projeto:")
-    if (!name) return
-
+  const handleCreateProject = async (data: { name: string; description: string }) => {
     try {
       const res = await fetch("/api/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name }),
+        body: JSON.stringify(data),
       })
 
       if (res.ok) {
         const project = await res.json()
         router.push(`/projects/${project.id}`)
-      } else {
-        console.error("[v0] Failed to create project:", res.status)
-        alert("Erro ao criar projeto. Tente novamente.")
       }
     } catch (error) {
       console.error("[v0] Error creating project:", error)
-      alert("Erro ao criar projeto. Tente novamente.")
     }
   }
 
@@ -107,7 +102,10 @@ export default function Dashboard() {
 
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-foreground">Projetos Recentes</h2>
-          <Button onClick={handleCreateProject} className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button
+            onClick={() => setIsProjectModalOpen(true)}
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
+          >
             <Plus className="w-4 h-4 mr-2" />
             Novo Projeto
           </Button>
@@ -120,7 +118,10 @@ export default function Dashboard() {
             </div>
             <h3 className="text-xl font-semibold text-foreground mb-2">Nenhum projeto ainda</h3>
             <p className="text-muted-foreground mb-6">Crie seu primeiro projeto para começar</p>
-            <Button onClick={handleCreateProject} className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button
+              onClick={() => setIsProjectModalOpen(true)}
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
               <Plus className="w-4 h-4 mr-2" />
               Criar Projeto
             </Button>
@@ -133,6 +134,8 @@ export default function Dashboard() {
           </div>
         )}
       </main>
+
+      <ProjectModal open={isProjectModalOpen} onOpenChange={setIsProjectModalOpen} onSubmit={handleCreateProject} />
     </div>
   )
 }
