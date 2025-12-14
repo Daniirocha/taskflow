@@ -32,16 +32,15 @@ TaskFlow Pro é uma aplicação web moderna para gerenciamento de projetos e tar
 - DB local (desenvolvimento): SQLite (prisma)
 
 ## 🎥 Demonstração
-Insira GIFs e screenshots na pasta `public/` e substitua os links abaixo.
 
 ### Dashboard
-![Dashboard](gifs/dashboard.gif)
+![Dashboard](public/gifs/dashboard.gif)
 
 ### Criação de Projeto
-![Criação de Projeto](gifs/create-project.gif)
+![Criação de Projeto](public/gifs/create-project.gif)
 
 ### Board Kanban (Drag & Drop)
-![Kanban](gifs/kanban.gif)
+![Kanban](public/gifs/kanban.gif)
 
 ## 📦 Estrutura do Projeto (resumida)
 ```
