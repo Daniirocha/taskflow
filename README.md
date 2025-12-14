@@ -105,4 +105,3 @@ Danielle Rocha — Desenvolvedora e autora do projeto. Ideal para portfólio e a
 Este projeto está licenciado sob a licença MIT.
 
 ---
-
