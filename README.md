@@ -34,9 +34,14 @@ TaskFlow Pro é uma aplicação web moderna para gerenciamento de projetos e tar
 ## 🎥 Demonstração
 Insira GIFs e screenshots na pasta `public/` e substitua os links abaixo.
 
-- Dashboard: `public/gifs/dashboard.gif`
-- Criação de Projeto: `public/gifs/create-project.gif`
-- Board Kanban (Drag & Drop): `public/gifs/kanban.gif`
+### Dashboard
+![Dashboard](gifs/dashboard.gif)
+
+### Criação de Projeto
+![Criação de Projeto](gifs/create-project.gif)
+
+### Board Kanban (Drag & Drop)
+![Kanban](gifs/kanban.gif)
 
 ## 📦 Estrutura do Projeto (resumida)
 ```
